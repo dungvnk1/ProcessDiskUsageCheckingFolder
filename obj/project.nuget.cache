@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Kb+VXI/y8lCeFamIHiqLLHyhr8JVmB9t1Yr3T+OHGT3lzV+BSTsOEwnelypEk+wBJUMd6PJoWPw6CvLkAj5Okw==",
+  "success": true,
+  "projectFilePath": "E:\\Intern C#\\CheckingDiskUsageFolder\\CheckingDiskUsageFolder\\CheckingDiskUsageFolder.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Acer\\.nuget\\packages\\system.codedom\\8.0.0\\system.codedom.8.0.0.nupkg.sha512",
+    "C:\\Users\\Acer\\.nuget\\packages\\system.management\\8.0.0\\system.management.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
