@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\Intern C#\CheckingDiskUsageFolder\CheckingDiskUsageFolder\obj\Debug\net7.0-windows\
+E:\Intern C#\CheckingDiskUsageFolder\ProcessDiskUsageCheckingFolder\obj\Debug\net7.0-windows\
 CheckingDiskUsageFolder
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
-E:\Intern C#\CheckingDiskUsageFolder\CheckingDiskUsageFolder\App.xaml
+E:\Intern C#\CheckingDiskUsageFolder\ProcessDiskUsageCheckingFolder\App.xaml
 11407045341
 
 62074325980
-1991259541877
+199-948747246
 MainWindow.xaml;
 
-False
+True
 

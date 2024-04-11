@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Intern C#\\CheckingDiskUsageFolder\\CheckingDiskUsageFolder\\CheckingDiskUsageFolder.csproj": {}
+    "E:\\Intern C#\\CheckingDiskUsageFolder\\ProcessDiskUsageCheckingFolder\\CheckingDiskUsageFolder.csproj": {}
   },
   "projects": {
-    "E:\\Intern C#\\CheckingDiskUsageFolder\\CheckingDiskUsageFolder\\CheckingDiskUsageFolder.csproj": {
+    "E:\\Intern C#\\CheckingDiskUsageFolder\\ProcessDiskUsageCheckingFolder\\CheckingDiskUsageFolder.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Intern C#\\CheckingDiskUsageFolder\\CheckingDiskUsageFolder\\CheckingDiskUsageFolder.csproj",
+        "projectUniqueName": "E:\\Intern C#\\CheckingDiskUsageFolder\\ProcessDiskUsageCheckingFolder\\CheckingDiskUsageFolder.csproj",
         "projectName": "CheckingDiskUsageFolder",
-        "projectPath": "E:\\Intern C#\\CheckingDiskUsageFolder\\CheckingDiskUsageFolder\\CheckingDiskUsageFolder.csproj",
+        "projectPath": "E:\\Intern C#\\CheckingDiskUsageFolder\\ProcessDiskUsageCheckingFolder\\CheckingDiskUsageFolder.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "E:\\Intern C#\\CheckingDiskUsageFolder\\CheckingDiskUsageFolder\\obj\\",
+        "outputPath": "E:\\Intern C#\\CheckingDiskUsageFolder\\ProcessDiskUsageCheckingFolder\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -69,7 +69,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

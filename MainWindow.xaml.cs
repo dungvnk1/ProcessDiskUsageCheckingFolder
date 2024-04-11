@@ -29,9 +29,49 @@ namespace CheckingDiskUsageFolder
                     break;
                 }
             }
+            MessageBox.Show($"Checking process disk usage of folder {folderPath} completed!");
         }
 
         public async Task OpenFileAndCheckDiskUsage(string filePath)
+        {
+            string defaultPath = GetDefaultAppPath(filePath);
+
+            // Mở file bằng ứng dụng mặc định
+            ProcessStartInfo startInfo = new ProcessStartInfo(defaultPath);
+            startInfo.Arguments = $"\"{filePath}\"";
+            Process process = Process.Start(startInfo);
+
+            // Kiểm tra xem process có phải là null không
+            if (process == null)
+            {
+                MessageBox.Show("Cannot open file");
+                return;
+            }
+
+            // Xác định ứng dụng mà hệ thống sử dụng để mở file
+            string appName = process.ProcessName;
+            long diskUsage = 0;
+            // Kiểm tra sử dụng đĩa của quá trình ứng dụng mỗi giây trong 3 giây
+            for (int i = 0; i < 3; i++)
+            {
+                await Task.Delay(1000); // Đợi 1 giây
+                PerformanceCounter pc = new PerformanceCounter("Process", "IO Data Bytes/sec", appName);
+                diskUsage += pc.RawValue / 1000000;
+
+            }
+
+
+            if (diskUsage > 0)
+            {
+                MessageBox.Show($"This {filePath} is not stable with disk usage: {diskUsage} Mb/s");
+            }
+            else
+            {
+                MessageBox.Show($"This {filePath} is stable with disk usage: {diskUsage} Mb/s");
+            }
+        }
+
+        public string GetDefaultAppPath(string filePath)
         {
             string defaultPath = "";
             if (!File.Exists(filePath))
@@ -90,43 +130,7 @@ namespace CheckingDiskUsageFolder
                 }
             }
 
-            // Mở file bằng ứng dụng mặc định
-            ProcessStartInfo startInfo = new ProcessStartInfo(defaultPath);
-            startInfo.Arguments = $"\"{filePath}\"";
-            Process process = Process.Start(startInfo);
-
-            // Kiểm tra xem process có phải là null không
-            if (process == null)
-            {
-                MessageBox.Show("Cannot open file");
-                return;
-            }
-
-            // Đợi cho đến khi ứng dụng khởi động
-            //process.WaitForInputIdle();
-
-            // Xác định ứng dụng mà hệ thống sử dụng để mở file
-            string appName = process.ProcessName;
-            long diskUsage = 0;
-            // Kiểm tra sử dụng đĩa của quá trình ứng dụng mỗi giây trong 3 giây
-            for (int i = 0; i < 3; i++)
-            {
-                await Task.Delay(1000); // Đợi 1 giây
-                PerformanceCounter pc = new PerformanceCounter("Process", "IO Data Bytes/sec", appName);
-                diskUsage += pc.RawValue / 1000000;
-
-            }
-
-
-            if (diskUsage > 0)
-            {
-                MessageBox.Show($"This {filePath} is not stable with disk usage: {diskUsage} Mb/s");
-            }
-            else
-            {
-                MessageBox.Show($"This {filePath} is stable with disk usage: {diskUsage} Mb/s");
-            }
-
+            return defaultPath;
         }
     }
 }
