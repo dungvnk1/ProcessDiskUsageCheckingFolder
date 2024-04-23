@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
+using System.Windows.Automation;
 using System.Windows.Forms;
 
 namespace CheckingDiskUsageFolderWinForm
@@ -65,7 +66,6 @@ namespace CheckingDiskUsageFolderWinForm
             }
         }
 
-
         public async Task OpenFileAndCheckDiskUsage(string filePath)
         {
             string defaultPath = GetDefaultAppPath(filePath);
@@ -75,11 +75,20 @@ namespace CheckingDiskUsageFolderWinForm
             startInfo.Arguments = $"\"{filePath}\"";
             Process process = Process.Start(startInfo);
 
+            await Task.Delay(1000);
+
             // Kiểm tra xem process có phải là null không
-            if (process == null)
+            if (process == null || process.HasExited)
             {
                 MessageBox.Show("Cannot open file");
                 return;
+            }
+
+            //Kiểm tra xem có cửa sổ pop-up nào không
+            bool hasPopup = await CheckForPopup(process);
+            if (hasPopup)
+            {
+                await SelectNoOption(process);
             }
 
             // Xác định ứng dụng mà hệ thống sử dụng để mở file
@@ -91,9 +100,21 @@ namespace CheckingDiskUsageFolderWinForm
                 await Task.Delay(1000); // Đợi 1 giây
                 PerformanceCounter pc = new PerformanceCounter("Process", "IO Data Bytes/sec", appName);
                 diskUsage += pc.RawValue / 1000000;
-
             }
 
+            // Giá trị sử dụng đĩa lớn hơn 50 thì kiểm tra lại
+            if(diskUsage < 50)
+            {
+                MessageBox.Show("Re-check disk usage! Please wait ...!");
+                diskUsage = 0;
+                // Kiểm tra sử dụng đĩa của quá trình ứng dụng mỗi giây trong 3 giây
+                for (int i = 0; i < 3; i++)
+                {
+                    await Task.Delay(1000); // Đợi 1 giây
+                    PerformanceCounter pc = new PerformanceCounter("Process", "IO Data Bytes/sec", appName);
+                    diskUsage += pc.RawValue / 1000000;
+                }
+            }
 
             if (diskUsage > 0)
             {
@@ -166,5 +187,68 @@ namespace CheckingDiskUsageFolderWinForm
 
             return defaultPath;
         }
+
+        public async Task<bool> CheckForPopup(Process process)
+        {
+            await Task.Delay(1000); // Wait for the process to start and for any potential pop-ups to appear
+
+            if (process == null || process.HasExited)
+            {
+                return false;
+            }
+
+            // Get the main window handle of the process
+            IntPtr mainWindowHandle = process.MainWindowHandle;
+
+            if(mainWindowHandle != IntPtr.Zero)
+            {
+                // Get the AutomationElement corresponding to the main window
+                AutomationElement mainWindow = AutomationElement.FromHandle(mainWindowHandle);
+
+                // Find all windows that are children of the main window
+                AutomationElementCollection childWindows = mainWindow.FindAll(TreeScope.Children, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Window));
+
+                // If there are any child windows, then a pop-up has appeared
+                return childWindows.Count > 0;
+            }
+
+            return false;
+        }
+
+        public async Task SelectNoOption(Process process)
+        {
+            await Task.Delay(1000); // Wait for the process to start and for any potential pop-ups to appear
+
+            if (process == null || process.HasExited)
+            {
+                return;
+            }
+
+            // Get the main window handle of the process
+            IntPtr mainWindowHandle = process.MainWindowHandle;
+
+            // Get the AutomationElement corresponding to the main window
+            AutomationElement mainWindow = AutomationElement.FromHandle(mainWindowHandle);
+
+            // Find all windows that are children of the main window
+            AutomationElementCollection childWindows = mainWindow.FindAll(TreeScope.Children, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Window));
+
+            foreach (AutomationElement window in childWindows)
+            {
+                // Find all buttons that are children of the window
+                AutomationElementCollection buttons = window.FindAll(TreeScope.Children, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Button));
+
+                foreach (AutomationElement button in buttons)
+                {
+                    // If the button's name is "No", invoke it
+                    if (button.Current.Name == "No")
+                    {
+                        InvokePattern invokePattern = button.GetCurrentPattern(InvokePattern.Pattern) as InvokePattern;
+                        invokePattern.Invoke();
+                    }
+                }
+            }
+        }
+
     }
 }
