@@ -15,19 +15,15 @@ namespace CheckingDiskUsageFolderWinForm
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ChooseFolder_Click(object sender, EventArgs e)
+        #region Events
+        private void btnChooseFolder_Click(object sender, EventArgs e)
         {
             SelectFolderAndDisplayPath();
         }
 
-        private async void CheckDiskProcessFolder_Click(object sender, EventArgs e)
+        private async void btnStart_Click(object sender, EventArgs e)
         {
-            string folderPath = folderPathTextBox.Text;
+            string folderPath = txbFolderPath.Text;
             foreach (var file in Directory.EnumerateFiles(folderPath))
             {
                 await OpenFileAndCheckDiskUsage(file);
@@ -43,6 +39,14 @@ namespace CheckingDiskUsageFolderWinForm
             MessageBox.Show($"Checking process disk usage of folder {folderPath} completed!");
         }
 
+        private void btnResetCOMPort_Click(object sender, EventArgs e)
+        {
+            cbCOMPort.Text = "";
+        }
+        #endregion
+
+
+        #region Methods
         private void SelectFolderAndDisplayPath()
         {
             using (var folderBrowserDialog = new FolderBrowserDialog())
@@ -57,7 +61,7 @@ namespace CheckingDiskUsageFolderWinForm
                 if (result == DialogResult.OK) // Kiểm tra xem người dùng có chọn một folder không
                 {
                     string selectedFolderPath = folderBrowserDialog.SelectedPath; // Lấy đường dẫn của folder đã chọn
-                    folderPathTextBox.Text = selectedFolderPath; // Hiển thị đường dẫn trong TextBox
+                    txbFolderPath.Text = selectedFolderPath; // Hiển thị đường dẫn trong TextBox
                 }
                 else
                 {
@@ -102,10 +106,10 @@ namespace CheckingDiskUsageFolderWinForm
                 diskUsage += pc.RawValue / 1000000;
             }
 
-            // Giá trị sử dụng đĩa lớn hơn 50 thì kiểm tra lại
-            if(diskUsage < 50)
+            // Giá trị sử dụng đĩa lớn hơn 200 thì kiểm tra lại
+            while(diskUsage > 200)
             {
-                MessageBox.Show("Re-check disk usage! Please wait ...!");
+                MessageBox.Show("Re-checking disk usage! Click OK to continue!");
                 diskUsage = 0;
                 // Kiểm tra sử dụng đĩa của quá trình ứng dụng mỗi giây trong 3 giây
                 for (int i = 0; i < 3; i++)
@@ -114,6 +118,13 @@ namespace CheckingDiskUsageFolderWinForm
                     PerformanceCounter pc = new PerformanceCounter("Process", "IO Data Bytes/sec", appName);
                     diskUsage += pc.RawValue / 1000000;
                 }
+            }
+
+            // Add code here to kill the process after checking disk usage
+            if (!process.HasExited)
+            {
+                process.Kill();
+                process.WaitForExit(); // Ensure the process has been terminated
             }
 
             if (diskUsage > 0)
@@ -249,6 +260,7 @@ namespace CheckingDiskUsageFolderWinForm
                 }
             }
         }
+        #endregion
 
     }
 }
