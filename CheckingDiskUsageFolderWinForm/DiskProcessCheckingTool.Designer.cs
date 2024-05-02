@@ -144,6 +144,7 @@
             this.btnDisconnect.TabIndex = 12;
             this.btnDisconnect.Text = "Disconnect";
             this.btnDisconnect.UseVisualStyleBackColor = true;
+            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
             // 
             // btnConnect
             // 
@@ -156,6 +157,7 @@
             this.btnConnect.TabIndex = 11;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // cbParity
             // 
@@ -208,16 +210,11 @@
             // 
             this.cbCOMPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCOMPort.FormattingEnabled = true;
-            this.cbCOMPort.Items.AddRange(new object[] {
-            "COM3",
-            "COM4",
-            "COM5"});
             this.cbCOMPort.Location = new System.Drawing.Point(149, 47);
             this.cbCOMPort.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbCOMPort.Name = "cbCOMPort";
             this.cbCOMPort.Size = new System.Drawing.Size(121, 28);
             this.cbCOMPort.TabIndex = 6;
-            this.cbCOMPort.Text = "COM3";
             // 
             // label4
             // 
@@ -279,6 +276,7 @@
             this.btnSetCopy.TabIndex = 29;
             this.btnSetCopy.Text = "Set Copies Number";
             this.btnSetCopy.UseVisualStyleBackColor = true;
+            this.btnSetCopy.Click += new System.EventHandler(this.btnSetCopy_Click);
             // 
             // textBox5
             // 
@@ -370,6 +368,7 @@
             this.btnSendData.TabIndex = 31;
             this.btnSendData.Text = "Send";
             this.btnSendData.UseVisualStyleBackColor = true;
+            this.btnSendData.Click += new System.EventHandler(this.btnSendData_Click);
             // 
             // DiskProcessCheckingTool
             // 
@@ -398,6 +397,7 @@
 
         #endregion
 
+        private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Button btnChooseFolder;
         private System.Windows.Forms.TextBox txbFolderPath;
         private System.Windows.Forms.Button btnStart;

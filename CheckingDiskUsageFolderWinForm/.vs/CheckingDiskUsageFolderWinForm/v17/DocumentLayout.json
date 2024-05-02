@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "E:\\Intern C#\\CheckingDiskUsageFolder\\ProcessDiskUsageCheckingFolder\\CheckingDiskUsageFolderWinForm\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3D650408-8F99-47CF-8054-98CF05F3438B}|CheckingDiskUsageFolderWinForm.csproj|E:\\Intern C#\\CheckingDiskUsageFolder\\ProcessDiskUsageCheckingFolder\\CheckingDiskUsageFolderWinForm\\diskprocesscheckingtool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3D650408-8F99-47CF-8054-98CF05F3438B}|CheckingDiskUsageFolderWinForm.csproj|e:\\intern c#\\checkingdiskusagefolder\\processdiskusagecheckingfolder\\checkingdiskusagefolderwinform\\diskprocesscheckingtool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3D650408-8F99-47CF-8054-98CF05F3438B}|CheckingDiskUsageFolderWinForm.csproj|solutionrelative:diskprocesscheckingtool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3D650408-8F99-47CF-8054-98CF05F3438B}|CheckingDiskUsageFolderWinForm.csproj|e:\\intern c#\\checkingdiskusagefolder\\processdiskusagecheckingfolder\\checkingdiskusagefolderwinform\\diskprocesscheckingtool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{3D650408-8F99-47CF-8054-98CF05F3438B}|CheckingDiskUsageFolderWinForm.csproj|solutionrelative:diskprocesscheckingtool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D650408-8F99-47CF-8054-98CF05F3438B}|CheckingDiskUsageFolderWinForm.csproj|e:\\intern c#\\checkingdiskusagefolder\\processdiskusagecheckingfolder\\checkingdiskusagefolderwinform\\diskprocesscheckingtool.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D650408-8F99-47CF-8054-98CF05F3438B}|CheckingDiskUsageFolderWinForm.csproj|solutionrelative:diskprocesscheckingtool.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,19 +22,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DiskProcessCheckingTool.cs",
-              "DocumentMoniker": "E:\\Intern C#\\CheckingDiskUsageFolder\\ProcessDiskUsageCheckingFolder\\CheckingDiskUsageFolderWinForm\\DiskProcessCheckingTool.cs",
-              "RelativeDocumentMoniker": "DiskProcessCheckingTool.cs",
-              "ToolTip": "E:\\Intern C#\\CheckingDiskUsageFolder\\ProcessDiskUsageCheckingFolder\\CheckingDiskUsageFolderWinForm\\DiskProcessCheckingTool.cs",
-              "RelativeToolTip": "DiskProcessCheckingTool.cs",
-              "ViewState": "AQIAACoAAAAAAAAAAAAiwFEAAAAjAAAA",
+              "DocumentIndex": 2,
+              "Title": "DiskProcessCheckingTool.Designer.cs",
+              "DocumentMoniker": "E:\\Intern C#\\CheckingDiskUsageFolder\\ProcessDiskUsageCheckingFolder\\CheckingDiskUsageFolderWinForm\\DiskProcessCheckingTool.Designer.cs",
+              "RelativeDocumentMoniker": "DiskProcessCheckingTool.Designer.cs",
+              "ToolTip": "E:\\Intern C#\\CheckingDiskUsageFolder\\ProcessDiskUsageCheckingFolder\\CheckingDiskUsageFolderWinForm\\DiskProcessCheckingTool.Designer.cs",
+              "RelativeToolTip": "DiskProcessCheckingTool.Designer.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAzwI8BAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-14T07:47:00.425Z",
+              "WhenOpened": "2024-05-02T07:05:49.064Z",
               "EditorCaption": ""
             },
             {
@@ -42,8 +46,21 @@
               "ToolTip": "E:\\Intern C#\\CheckingDiskUsageFolder\\ProcessDiskUsageCheckingFolder\\CheckingDiskUsageFolderWinForm\\DiskProcessCheckingTool.cs [Design]",
               "RelativeToolTip": "DiskProcessCheckingTool.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-14T07:39:30.471Z",
+              "WhenOpened": "2024-05-02T06:57:00.838Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DiskProcessCheckingTool.cs",
+              "DocumentMoniker": "E:\\Intern C#\\CheckingDiskUsageFolder\\ProcessDiskUsageCheckingFolder\\CheckingDiskUsageFolderWinForm\\DiskProcessCheckingTool.cs",
+              "RelativeDocumentMoniker": "DiskProcessCheckingTool.cs",
+              "ToolTip": "E:\\Intern C#\\CheckingDiskUsageFolder\\ProcessDiskUsageCheckingFolder\\CheckingDiskUsageFolderWinForm\\DiskProcessCheckingTool.cs",
+              "RelativeToolTip": "DiskProcessCheckingTool.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAQwBAAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-14T07:47:00.425Z",
+              "EditorCaption": ""
             }
           ]
         }

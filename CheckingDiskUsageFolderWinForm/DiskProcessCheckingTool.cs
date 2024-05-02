@@ -1,10 +1,13 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Ports;
 using System.Threading.Tasks;
 using System.Windows.Automation;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CheckingDiskUsageFolderWinForm
 {
@@ -13,6 +16,8 @@ namespace CheckingDiskUsageFolderWinForm
         public DiskProcessCheckingTool()
         {
             InitializeComponent();
+
+            findConnectedPorts();
         }
 
         #region Events
@@ -39,14 +44,98 @@ namespace CheckingDiskUsageFolderWinForm
             MessageBox.Show($"Checking process disk usage of folder {folderPath} completed!");
         }
 
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialPort1.PortName = cbCOMPort.Text;
+                serialPort1.BaudRate = Convert.ToInt32(cbBaudRate.Text);
+                serialPort1.DataBits = Convert.ToInt32(cbDataBits.Text);
+                serialPort1.Parity = System.IO.Ports.Parity.None;
+                serialPort1.StopBits = System.IO.Ports.StopBits.One;
+                serialPort1.DtrEnable = true;
+                serialPort1.Open();
+                pbSettings.Value = 100;
+            }
+            catch (Exception exe)
+            {
+                MessageBox.Show(exe.Message, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //throw;
+            }
+        }
+
         private void btnResetCOMPort_Click(object sender, EventArgs e)
         {
             cbCOMPort.Text = "";
+            cbCOMPort.Items.Clear();
+            findConnectedPorts();
+        }
+
+        private void btnSendData_Click(object sender, EventArgs e)
+        {
+            serialPort1.WriteLine(txbSendData.Text);
+            txbSendData.Text = null;
+        }
+
+        private void btnDisconnect_Click(object sender, EventArgs e)
+        {
+            serialPort1.Close();
+            pbSettings.Value = 0;
+        }
+
+        private void btnSetCopy_Click(object sender, EventArgs e)
+        {
+            serialPort1.WriteLine("C" + txbSetCopy.Text);
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            txbReadData.Clear();
         }
         #endregion
 
 
         #region Methods
+        public void findConnectedPorts()
+        {
+            string[] ports = SerialPort.GetPortNames();
+            foreach (string port in ports)
+            {
+                cbCOMPort.Items.Add(port);
+            }
+        }
+
+        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            string incomingText = serialPort1.ReadExisting();
+
+            //GlobalVariable.incomingTextPublic = serialPort1.ReadExisting();
+            //incomingText = serialPort1.ReadExisting();
+
+            //backgroundWorker1.RunWorkerAsync();
+            writeIncomingData(incomingText);
+        }
+
+        private void writeIncomingData(string text)
+        {
+
+            BeginInvoke(new EventHandler(async delegate
+            {
+                //ReceiverTextBox.ResetText();
+                //ReceiverTextBox.AppendText(text);
+                //ReceiverTextBox.ScrollToCaret();
+
+                txbReadData.Clear();
+
+                //backgroundWorker1.RunWorkerAsync();
+
+                txbReadData.Text = text;
+                txbReadData.ScrollToCaret();
+            }));
+        }
+
+
+
         private void SelectFolderAndDisplayPath()
         {
             using (var folderBrowserDialog = new FolderBrowserDialog())
