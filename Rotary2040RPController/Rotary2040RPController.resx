@@ -130,4 +130,37 @@
         RU5ErkJggg==
 </value>
   </data>
+  <data name="btnResetLeft.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
+        cQAAEnEB89x6jgAAAVBJREFUOE+dkr+KwkAQxpMIBkyhtiFFbFIZSJNG4mP4UgFfQwKCkPgMKRVMEAI2
+        YmEXLfxXfnczsOuux3FwCx+7M/v9ZoZNDHyvy+Wi6Xq9UvrPxXBZlqiqCs/nE4/HA7fbDbvdDnmeY7vd
+        4n6/yzvaKZZwlmXwPA+n0wnz+RyDwQCGYUhRnKYpjsejLKDBZOp2uxpk27YW9/t9hl+v109YqG1brq6O
+        SuMT7DgONpvNG16v1xgOhzweaTab4Xw+S5B2EhWg4mEYvmHRRTWqsXru9XpcQMLC8GlU8+IcRZEOu66L
+        yWQiQaFPmDQej3WYApL4nr/BdC+89OIM0wNQomkaDfyED4cD+4Ig4D+RYTIsl0tZta5rrch+v4dpmny3
+        WCw4J2HRYTqdwrIsdDod+L6POI4xGo04JjhJEvbSyFpnoaIo5ASqVqsVg0IS/t8CvgAtUbYtMTD0xwAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnResetRight.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
+        cQAAEnEB89x6jgAAAU1JREFUOE+dkr2qwkAQhaNCBFMktmJhmlQR0tiIPoYvJfgaIghC4jNYRtAQCNhI
+        CjtNYX7Kc5m57LqrIJc7cLKZ2fPtbDZr4A9RFAUej4cmCobLskRd16iqikfKj8cjwjDE6XTC8/mUc+fz
+        GYfD4QUL8Hq9YrlcwnEcGIYhRflqtUKe5xgOh9hsNi+4aRqGbdvWoG63q+WmafKowXEcw7Ishmm76ieQ
+        7ve7togGj8djLhJIkABpvN1uWCwWvHVSv9/Hfr9/wQT2ej2t2/u7mpM0OAiCD+M7pNY12Pd9aVZNAhSa
+        TqcYDAa/MJ00wST6v99gmhdehum2eJ7Hhcvl8gGrC2RZxj46YAmTYb1e80Sr1UKaphqUJInsuN1uuSZh
+        cUlmsxnDnU4HrutiMplgNBpx3m63MZ/PGSSvhCkR2u12souqKIrkTmRnfv4rgB8pwbYtYGvzgwAAAABJ
+        RU5ErkJggg==
+</value>
+  </data>
+  <metadata name="serialPort1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="FileNameColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>77</value>
+  </metadata>
 </root>
